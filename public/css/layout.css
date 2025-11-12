@@ -1,0 +1,47 @@
+.upload-container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 0 30px #00ffe0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.upload-tab,
+.upload-field {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.drop-zone {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 160px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(24px, 5vw, 48px);
+}
+
+.subtitle {
+  font-size: clamp(16px, 3vw, 24px);
+  margin-bottom: 40px;
+}

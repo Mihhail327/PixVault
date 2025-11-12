@@ -1,0 +1,76 @@
+body.upload-page {
+  background: url('../assets/gallery/vault-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.upload-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #00ffe0;
+  text-shadow: 0 0 5px #00ffe0;
+}
+
+.drop-label {
+  width: 100%;
+  max-width: 500px;
+  padding: 60px 30px;
+  border: 2px dashed #00ffe0;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  transition: background-color 0.4s ease, transform 0.4s ease;
+  animation: pulseGlow 3.5s infinite ease-in-out;
+}
+.drop-label:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: flicker 1.2s infinite ease-in-out;
+}
+
+.input-with-copy {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.input-with-copy input {
+  flex: 1;
+  width: 100%;
+  padding: 10px 48px 15px 12px;
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #00ffe0;
+  font-family: monospace;
+  font-size: 14px;
+  box-shadow: 0 0 10px #00ffe0 inset;
+  transition: box-shadow 0.3s ease;
+}
+.input-with-copy input:focus {
+  outline: none;
+  box-shadow: 0 0 20px #00ffe0 inset;
+}
+.copy-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #00ffe0;
+  background-color: rgba(0, 255, 224, 0.1);
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.2s ease;
+  z-index: 1;
+}
+.copy-icon.capied {
+  background-color: rgba(0, 255, 224, 0.4);
+  box-shadow: 0 0 10px #00ffe0;
+  transition: all 0.3s ease;
+}

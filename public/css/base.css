@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('../assets/gallery/vault-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+h1, h2, h3, p, .subtitle {
+  cursor: default;
+}
+h1 {
+  font-size: 48px;
+  color: #00ffe0;
+  text-shadow: 0 0 12px #00ffe0;
+  margin-bottom: 20px;
+}

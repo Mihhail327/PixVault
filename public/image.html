@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Image - PixVault</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/image.css" />
+</head>
+<body class="image-page">
+  <div class="image-container">
+    <img src="assets/gallery/image1.jpg" alt="Vault Image" class="vault-image" />
+
+    <div class="image-actions">
+      <button onclick="downloadImage()" class="action-btn">📥 Download</button>
+      <button onclick="shareImage()" class="action-btn">📤 Share</button>
+      <button onclick="goBack()" class="action-btn">← Back to Vault</button>
+    </div>
+  </div>
+
+  <script>
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.href = document.querySelector('.vault-image').src;
+      link.download = 'PixVault_Image.jpg';
+      link.click();
+    }
+
+    function shareImage() {
+      const url = document.querySelector('.vault-image').src;
+      navigator.clipboard.writeText(url).then(() => {
+        alert('Image link copied to clipboard!');
+      });
+    }
+
+    function goBack() {
+      window.location.href = 'gallery.html';
+    }
+  </script>
+</body>
+</html>

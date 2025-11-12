@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixVault Gallery</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body class="gallery-page">
+  <div class="gallery-container">
+    <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
+    <h1>Vault Gallery</h1>
+    <p class="subtitle">Browse your uploaded images</p>
+
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- JS will populate image cards here -->
+    </div>
+  </div>
+
+  <!-- ✅ Модальное окно вынесено за пределы галереи -->
+  <div class="modal" id="image-modal">
+    <div class="modal-content">
+      <img id="modal-image" src="" alt="Vault Image" />
+      <div class="modal-actions">
+        <button onclick="downloadModalImage()" class="action-btn">📥 Download</button>
+        <button onclick="shareModalImage()" class="action-btn">📤 Share</button>
+        <button onclick="closeModal()" class="action-btn">✖ Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>
