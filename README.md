@@ -1,7 +1,8 @@
 
+
 ---
 
-## 📁 `README.md` для PixVault
+### ✅ Исправленный фрагмент README
 
 ```markdown
 # 🚀 PixVault
@@ -16,7 +17,7 @@ PixVault — это визуально насыщенная платформа �
 
 - 🌌 Адаптивная галерея с сеткой
 - 🧠 Модальное окно с предпросмотром
-- 🧼 Кнопка удаления (опционально)
+- 🗑️ Кнопка удаления
 - 📱 Адаптация под мобильные устройства
 - 🐳 Подготовка к Docker и Node.js серверу
 - 🧾 Структурированный `package.json` и маршруты Express
@@ -28,11 +29,6 @@ PixVault — это визуально насыщенная платформа �
 ```bash
 git clone https://github.com/Mihhail327/pixvault.git
 cd pixvault
-```
-
-Если используешь Node:
-
-```bash
 npm install
 npm run dev
 ```
@@ -51,19 +47,27 @@ docker run -p 8080:80 pixvault
 ## 📁 Структура проекта
 
 ```
-pixvault/
-├── client/
-│   ├── gallery.html
-│   ├── css/
-│   └── js/
-├── server/
-│   ├── index.js
-│   └── routes/
-│       └── app.js
-├── assets/
-├── Dockerfile
-├── package.json
-├── README.md
+PixVault/
+├── public/                # Frontend files
+│   ├── assets/
+│   │   ├── css/           # Stylesheets (base.css, layout.css, components.css, ...)
+│   │   ├── js/            # Client scripts (upload.js, gallery.js, main.js)
+│   │   ├── icons/         # UI icons
+│   │   ├── gallery/       # Gallery assets
+│   │   └── uploads/       # Uploaded images
+│   ├── index.html         # Home page
+│   ├── upload.html        # Upload interface
+│   ├── gallery.html       # Gallery view
+│   └── image.html         # Single image view
+│
+├── server/                # Backend files
+│   ├── routes/            # API routes
+│   ├── data/              # Data storage / mock DB
+│   └── index.js           # Server entry point
+│
+├── package.json           # Project dependencies
+├── package-lock.json      # Dependency lock file
+└── README.md              # Documentation
 ```
 
 ---
@@ -72,7 +76,7 @@ pixvault/
 
 - HTML, CSS, JS
 - Express (Node.js)
-- Docker (nginx + node)
+- Docker (Node.js)
 - Адаптивная верстка
 - Модульная структура
 
@@ -88,7 +92,6 @@ Created by **Mihhail327**
 ## 📜 Лицензия
 
 MIT — свободно используйте, изменяйте и развивайте PixVault.
-
 ```
 
 ---
