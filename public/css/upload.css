@@ -1,7 +1,15 @@
+/* --- Стилизация фона и общих элементов --- */
 body.upload-page {
   background: url('../assets/gallery/vault-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   animation: fadeIn 0.6s ease forwards;
+}
+
+/* --- Центрирование блока Upload Link --- */
+.upload-field {
+  margin: 30px auto;
+  max-width: 400px;
+  text-align: center;
 }
 
 .upload-field label {
@@ -13,6 +21,7 @@ body.upload-page {
   text-shadow: 0 0 5px #00ffe0;
 }
 
+/* --- Стилизация зоны Drag & Drop --- */
 .drop-label {
   width: 100%;
   max-width: 500px;
@@ -22,55 +31,84 @@ body.upload-page {
   background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
   text-align: center;
-  transition: background-color 0.4s ease, transform 0.4s ease;
+  cursor: pointer;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
   animation: pulseGlow 3.5s infinite ease-in-out;
 }
+
 .drop-label:hover {
   background-color: rgba(0, 0, 0, 0.5);
+  border-color: #33ffcc;
   animation: flicker 1.2s infinite ease-in-out;
 }
 
-.input-with-copy {
-  position: relative;
+/* --- 🆕 Стилизация поля ссылки и кнопки "Copy" --- */
+.link-output-group {
   display: flex;
-  align-items: center;
-  max-width: 480px;
-  margin: 0 auto;
+  width: 100%;
 }
 
-.input-with-copy input {
+#upload-link {
   flex: 1;
-  width: 100%;
-  padding: 10px 48px 15px 12px;
+  padding: 15px 12px;
   border: 2px solid #00ffe0;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #00ffe0;
-  font-family: monospace;
+  font-family: 'Consolas', monospace;
   font-size: 14px;
-  box-shadow: 0 0 10px #00ffe0 inset;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 224, 0.5) inset;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
-.input-with-copy input:focus {
+
+#upload-link:focus {
   outline: none;
+  border-color: #33ffcc;
   box-shadow: 0 0 20px #00ffe0 inset;
 }
-.copy-icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 18px;
+
+#copy-btn {
+  padding: 8px 12px;
+  border: 2px solid #00ffe0;
+  border-radius: 0 10px 10px 0; 
+  background-color: rgba(0, 0, 0, 0.7);
   color: #00ffe0;
-  background-color: rgba(0, 255, 224, 0.1);
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.2s ease;
-  z-index: 1;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 5px #00ffe0;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
-.copy-icon.capied {
-  background-color: rgba(0, 255, 224, 0.4);
-  box-shadow: 0 0 10px #00ffe0;
-  transition: all 0.3s ease;
+
+#copy-btn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #33ffcc;
+  box-shadow: 0 0 10px #33ffcc;
+  animation: flicker 0.8s infinite;
+}
+
+/* --- Стилизация Галереи (если включена) --- */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.gallery-image {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #00ffe0;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .gallery-image {
+    width: 100%;
+  }
 }

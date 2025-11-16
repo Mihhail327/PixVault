@@ -11,6 +11,12 @@
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body class="gallery-page">
+  <!-- ✅ Навигационная панель -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-button">🏠 Home</a>
+    <a href="upload.html" class="nav-button">📤 Upload</a>
+  </nav>
+
   <div class="gallery-container">
     <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
     <h1>Vault Gallery</h1>
@@ -21,14 +27,14 @@
     </div>
   </div>
 
-  <!-- ✅ Модальное окно вынесено за пределы галереи -->
-  <div class="modal" id="image-modal">
+  <!-- ✅ Модальное окно -->
+  <div class="modal hidden" id="image-modal">
     <div class="modal-content">
-      <img id="modal-image" src="" alt="Vault Image" />
+      <img id="modal-image" src="" alt="Selected image from PixVault" role="img" />
       <div class="modal-actions">
-        <button onclick="downloadModalImage()" class="action-btn">📥 Download</button>
-        <button onclick="shareModalImage()" class="action-btn">📤 Share</button>
-        <button onclick="closeModal()" class="action-btn">✖ Close</button>
+        <button type="button" onclick="downloadModalImage()" class="action-btn">📥 Download</button>
+        <button type="button" onclick="shareModalImage()" class="action-btn">📤 Share</button>
+        <button type="button" onclick="closeModal()" class="action-btn">✖ Close</button>
       </div>
     </div>
   </div>

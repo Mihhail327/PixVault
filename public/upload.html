@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upload to PixVault</title>
-  <link rel="stylesheet" href="css/base.css"/>
-  <link rel="stylesheet" href="css/layout.css"/>
-  <link rel="stylesheet" href="css/components.css"/>
-  <link rel="stylesheet" href="css/upload.css"/>
-  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/upload.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body class="upload-page">
   <div class="upload-container">
-    <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo"/>
+    <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
 
     <h1>Upload Your Images to PixVault</h1>
-    <p class="subtitle">Upload selfies, images, mems, or any fun pictures here</p>
+    <p class="subtitle">Upload selfies, images, memes, or any fun pictures here</p>
 
+    <!-- ✅ Навигация по вкладкам -->
     <div class="tabs">
       <button class="tab active" data-tab="upload" onclick="switchTab('upload')">Upload</button>
       <button class="tab" data-tab="images" onclick="switchTab('images')">From URL</button>
+      <!-- 🔹 Gallery теперь ведёт на отдельную страницу -->
+      <a href="gallery.html" class="tab">Gallery</a>
     </div>
 
+    <!-- ✅ Вкладка загрузки -->
     <div id="upload-tab" class="tab-content">
       <div class="drop-zone" id="drop-zone">
-        <input type="file" id="file-input" accept=".jpg, .png, .gif" hidden/>
+        <input type="file" id="file-input" accept=".jpg, .png, .gif" hidden />
         <label for="file-input" class="drop-label">
           <p>Select a file or drag and drop here</p>
-          <small>Only support .jpg, .png, .gif. Maximum file size is 5MB</small>
+          <small>Only .jpg, .png, .gif. Max size: 5MB</small>
         </label>
       </div>
 
       <div class="status" id="status"></div>
 
       <div class="upload-field">
-        <label>Current Upload</label>
-        <div class="input-with-copy">
-          <input type="text" id="upload-link" placeholder="https://" readonly />
-          <span class="copy-icon" onclick="copyLink()">Copy📋</span>
+        <label>Upload Link</label>
+        <div class="link-output-group">
+          <input type="text" id="upload-link" readonly placeholder="Your generated link" />
+          <button type="button" id="copy-btn" class="action-btn copy-btn" title="Copy Link">Copy 📄</button>
         </div>
       </div>
+
+      <!-- 🆕 Галерея прямо на вкладке Upload -->
+      <div id="gallery-grid" class="gallery-grid"></div>
     </div>
 
+    <!-- ✅ Вкладка ссылок -->
     <div id="images-tab" class="tab-content" style="display: none;">
       <table class="image-table">
         <thead>
@@ -51,11 +59,13 @@
             <th>Delete</th>
           </tr>
         </thead>
+        <tbody id="image-list">
+          <!-- Uploaded images will appear here -->
+        </tbody>
       </table>
     </div>
   </div>
 
   <script src="js/upload.js"></script>
-  
 </body>
 </html>
