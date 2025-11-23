@@ -1,5 +1,5 @@
 
-markdown
+---
 # 🚀 PixVault
 
 **Futuristic image vault gallery with neon UI, modal previews, and full-stack potential.**
