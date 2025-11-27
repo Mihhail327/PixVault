@@ -1,10 +1,5 @@
 
-
 ---
-
-### ✅ Исправленный фрагмент README
-
-```markdown
 # 🚀 PixVault
 
 **Futuristic image vault gallery with neon UI, modal previews, and full-stack potential.**
@@ -92,6 +87,5 @@ Created by **Mihhail327**
 ## 📜 Лицензия
 
 MIT — свободно используйте, изменяйте и развивайте PixVault.
-```
 
 ---
