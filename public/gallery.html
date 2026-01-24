@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixVault Gallery</title>
+  <title>PixVault Gallery | Visual Core</title>
+
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/gallery.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/gallery.css" />     <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body class="gallery-page">
-  <!-- ✅ Навигационная панель -->
+
   <nav class="navbar">
     <a href="index.html" class="nav-button">🏠 Home</a>
     <a href="upload.html" class="nav-button">📤 Upload</a>
@@ -19,18 +19,18 @@
 
   <div class="gallery-container">
     <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
-    <h1>Vault Gallery</h1>
+
+    <h1 class="neon-text">Vault Gallery</h1>
     <p class="subtitle">Browse your uploaded images</p>
 
     <div class="gallery-grid" id="gallery-grid">
-      <!-- JS will populate image cards here -->
-    </div>
+      </div>
   </div>
 
-  <!-- ✅ Модальное окно -->
   <div class="modal hidden" id="image-modal">
     <div class="modal-content">
       <img id="modal-image" src="" alt="Selected image from PixVault" role="img" />
+
       <div class="modal-actions">
         <button type="button" onclick="downloadModalImage()" class="action-btn">📥 Download</button>
         <button type="button" onclick="shareModalImage()" class="action-btn">📤 Share</button>

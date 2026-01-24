@@ -1,52 +1,72 @@
+/* 1. ГЛАВНЫЙ ЭКРАН: Центрирование контента и градиентный фон */
 .image-page {
+  /* Линейный градиент создает эффект глубины пространства */
   background: linear-gradient(135deg, #0a0020, #1a0030);
   color: #00ffe0;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Orbitron', sans-serif; /* Футуристичный шрифт */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
+  margin: 0;
 }
 
+/* 2. КОНТЕЙНЕР ОБЪЕКТА: Рамка и свечение вокруг изображения */
 .image-container {
   text-align: center;
   max-width: 800px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный черный фон */
   border: 2px solid #00ffe0;
   border-radius: 16px;
-  box-shadow: 0 0 30px #00ffe0;
+  box-shadow: 0 0 30px #00ffe0; /* Интенсивное неоновое свечение */
   padding: 30px;
+  backdrop-filter: blur(5px); /* Легкое размытие под контейнером */
 }
 
+/* 3. САМО ИЗОБРАЖЕНИЕ: Стилизация картинки из хранилища */
 .vault-image {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 0 20px #00ffe0;
   margin-bottom: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* 4. ПАНЕЛЬ УПРАВЛЕНИЯ: Группа кнопок под картинкой */
 .image-actions {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Кнопки перенесутся на новую строку на узких экранах */
 }
 
+/* 5. КНОПКИ ДЕЙСТВИЙ (Download, Share, Back) */
 .action-btn {
   background-color: rgba(0, 255, 224, 0.1);
   border: 2px solid #00ffe0;
   color: #00ffe0;
   padding: 10px 20px;
   font-size: 16px;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .action-btn:hover {
   background-color: rgba(0, 255, 224, 0.3);
-  transform: scale(1.05);
+  transform: scale(1.05); /* Эффект увеличения при наведении */
+  box-shadow: 0 0 15px #00ffe0;
+}
+
+/* Акцент при нажатии */
+.action-btn:active {
+  transform: scale(0.95);
 }

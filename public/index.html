@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PixVault</title>
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css"/>
-  <link rel="stylesheet" href="css/animations.css"/>
+  <title>PixVault | Neon Storage</title>
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css"/>
+  <link rel="stylesheet" href="assets/css/animations.css"/>
 </head>
 <body class="vault-page">
   <div class="container">
     <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
-    <h1>Welcome to PixVault</h1>
+
+    <h1 class="neon-text">Welcome to PixVault</h1>
+
     <a href="gallery.html" class="holo-link">
       <div class="holo-frame">
-        <div class="holo-content"></div>
+        <div class="holo-content">
+            </div>
         <p class="hint">Click the projection to explore your vault</p>
       </div>
     </a>
-    <button class="upload-btn" onclick="location.href='upload.html'">UPLOAD IMAGE</button>
+
+    <div class="actions">
+        <button class="upload-btn" onclick="location.href='upload.html'">UPLOAD IMAGE</button>
+    </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <div id="image-modal" class="modal">
+    <span class="modal-close" id="close-modal">&times;</span>
+    <div class="modal-wrapper">
+        <img class="modal-content" id="full-image">
+        <div id="modal-caption" class="neon-caption"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

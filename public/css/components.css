@@ -17,7 +17,126 @@
   box-shadow: 0 0 20px #00ffe0;
   transition: transform 0.6s ease;
 }
+.upload-btn:hover {/**
+ * PixVault | Neural Components v1.0.0
+ * Стили интерактивных элементов интерфейса
+ */
+
+/* 🆔 ЛОГОТИП: Свечение через drop-shadow (лучше для PNG, чем box-shadow) */
+.logo {
+  width: 180px;
+  margin: 40px auto;
+  display: block;
+  filter: drop-shadow(0 0 10px #00ffe0);
+  transition: filter 0.3s ease;
+}
+
+/* 🚀 ГЛАВНАЯ КНОПКА ЗАГРУЗКИ */
+.upload-btn {
+  margin-top: 40px;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #00ffe0;
+  border: none;
+  border-radius: 10px;
+  color: #000; /* Черный текст на ярком фоне для контраста */
+  cursor: pointer;
+  box-shadow: 0 0 20px #00ffe0;
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
 .upload-btn:hover {
+  transform: scale(1.1); /* Уменьшил с 1.2 до 1.1 для более мягкого эффекта */
+  box-shadow: 0 0 35px #00ffe0;
+}
+
+/* 📑 СИСТЕМА ВКЛАДОК (TABS) */
+.tab {
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid #00ffe0;
+  color: #00ffe0;
+  cursor: pointer;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: rgba(0, 255, 224, 0.1);
+  transform: translateY(-2px);
+  /* Радиальный градиент создает эффект подсветки при наведении */
+  background-image: radial-gradient(circle at center, rgba(0, 255, 224, 0.2) 0%, transparent 70%);
+}
+
+/* Активная вкладка (поддерживаем оба варианта именования для JS) */
+.tab.active, .tab-active {
+  background-color: #00ffe0;
+  color: #000;
+  box-shadow: 0 0 15px #00ffe0;
+  animation: glowPulse 2s infinite ease-in-out; /* Анимация из animations.css */
+}
+
+/* 🌌 ГОЛОГРАФИЧЕСКИЙ КОРПУС (Holo-Frame) */
+.holo-frame {
+  width: 700px;
+  height: 450px;
+  margin: 0 auto;
+  border: 2px solid #00ffe0;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffe0;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.holo-frame:hover {
+  opacity: 1;
+  box-shadow: 0 0 40px #00ffe0;
+  transform: scale(1.02);
+}
+
+/* Содержимое голограммы (меняется в main.js) */
+.holo-content {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+}
+
+/* Текст-подсказка поверх голограммы */
+.hint {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  font-size: 20px;
+  color: #deee06; /* Желтый акцентный цвет (киберпанк классика) */
+  text-shadow: 2px 2px 5px #000;
+  pointer-events: none;
+}
+
+/* 🗑️ КНОПКА УДАЛЕНИЯ (внутри карточек) */
+.delete-btn {
+  background-color: rgba(255, 0, 85, 0.2); /* Красный оттенок для опасных действий */
+  border: 1px solid #ff0055;
+  font-size: 14px;
+  color: #ff0055;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #ff0055;
+  color: #fff;
+  box-shadow: 0 0 10px #ff0055;
+}
   transform: scale(1.2);
 }
 

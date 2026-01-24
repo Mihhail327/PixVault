@@ -3,58 +3,84 @@ const galleryGrid = document.getElementById('gallery-grid');
 const modal = document.getElementById('image-modal');
 const modalImage = document.getElementById('modal-image');
 
-// --- ФУНКЦИЯ ЗАГРУЗКИ ГАЛЕРЕИ ---
-function loadVaultGallery() {
-  galleryGrid.innerHTML = '<div class="loading-spinner"></div>';
+// --- ФУНКЦИЯ ЗАГРУЗКИ ГАЛЕРЕИ ИЗ БД ---
+async function loadVaultGallery() {
+  // Показываем индикатор загрузки в стиле киберпанк
+  galleryGrid.innerHTML = '<div class="loading-spinner">Initializing connection...</div>';
 
   try {
-    const savedImages = JSON.parse(localStorage.getItem('pixvault-images') || '[]');
-    galleryGrid.innerHTML = '';
+    // ⚡ ТЕПЕРЬ: Запрашиваем список файлов у нашего Flask API
+    const response = await fetch('/api/files');
 
-    if (savedImages.length === 0) {
+    if (!response.ok) throw new Error(`Status: ${response.status}`);
+
+    const data = await response.json();
+    galleryGrid.innerHTML = ''; // Очищаем сетку
+
+    // Если в базе Postgres нет записей
+    if (!data.files || data.files.length === 0) {
       galleryGrid.innerHTML =
-        '<p class="subtitle text-center" style="color:#00ffe0; grid-column: 1 / -1;">Vault is empty. Upload some images!</p>';
+        '<p class="subtitle text-center" style="color:#00ffe0; grid-column: 1 / -1;">Vault is empty. Synchronize some data!</p>';
       return;
     }
 
-    savedImages.forEach(image => renderImageCard(image));
+    // Отрисовываем каждую картинку, пришедшую с бэкенда
+    data.files.forEach(filename => {
+      // Формируем путь, который обслуживается через Nginx (/uploads/...)
+      const fileUrl = `/uploads/${filename}`;
+      renderImageCard(filename, fileUrl);
+    });
+
   } catch (error) {
     console.error('Gallery loading failed:', error);
-    galleryGrid.innerHTML = `<p class="subtitle text-center error" style="color: red; grid-column: 1 / -1;">Error loading gallery: ${error.message}</p>`;
+    galleryGrid.innerHTML = `<p class="subtitle text-center error" style="color: #ff0055; grid-column: 1 / -1;">CRITICAL_ERROR: ${error.message}</p>`;
   }
 }
 
 // --- ФУНКЦИЯ РЕНДЕРИНГА КАРТОЧКИ ---
-function renderImageCard(image) {
+function renderImageCard(filename, url) {
   const card = document.createElement('div');
   card.className = 'image-card';
 
+  // Создаем элемент изображения
   const img = document.createElement('img');
-  img.src = image.dataURL; // ⚡ используем сохранённый dataURL
-  img.alt = image.name || 'Vault Image';
-  img.onclick = () => openModal(image.dataURL);
+  img.src = url;
+  img.alt = filename;
+  img.loading = "lazy"; // Оптимизация: ленивая загрузка
 
+  // Клик по картинке открывает модальное окно (Lightbox)
+  img.onclick = () => openModal(url);
+
+  // Кнопка удаления (теперь удаляет и из БД, и с диска)
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-btn';
-  deleteBtn.textContent = 'Delete 🗑️';
-  deleteBtn.onclick = () => deleteImage(image.link, card);
+  deleteBtn.innerHTML = 'PURGE 🗑️'; // В киберпанк стиле
+  deleteBtn.onclick = () => deleteImage(filename, card);
 
   card.appendChild(img);
   card.appendChild(deleteBtn);
   galleryGrid.appendChild(card);
 }
 
-// --- ФУНКЦИЯ УДАЛЕНИЯ ---
-function deleteImage(link, cardElement) {
-  try {
-    const savedImages = JSON.parse(localStorage.getItem('pixvault-images') || '[]');
-    const updated = savedImages.filter(img => img.link !== link);
-    localStorage.setItem('pixvault-images', JSON.stringify(updated));
+// --- ФУНКЦИЯ УДАЛЕНИЯ (API DELETE) ---
+async function deleteImage(filename, cardElement) {
+  if (!confirm(`Are you sure you want to purge ${filename}?`)) return;
 
-    cardElement.remove();
-    console.log('Image deleted successfully!');
+  try {
+    // Отправляем запрос на бэкенд Flask
+    const response = await fetch(`/api/delete/${filename}`, {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      cardElement.remove(); // Удаляем из интерфейса
+      console.log(`${filename} erased from mainframe.`);
+    } else {
+      throw new Error("Access denied by server");
+    }
   } catch (error) {
-    console.error('Delete failed:', error);
+    console.error('Purge failed:', error);
+    alert("Error during data deletion.");
   }
 }
 
@@ -62,25 +88,29 @@ function deleteImage(link, cardElement) {
 function openModal(src) {
   modalImage.src = src;
   modal.classList.add('open');
+  modal.classList.remove('hidden'); // Учитываем оба варианта классов
 }
 
 function closeModal() {
   modal.classList.remove('open');
+  modal.classList.add('hidden');
   modalImage.src = '';
 }
 
+// Функции скачивания и копирования
 function downloadModalImage() {
   const link = document.createElement('a');
   link.href = modalImage.src;
-  const fileName = modalImage.src.substring(modalImage.src.lastIndexOf('/') + 1);
-  link.download = fileName || 'pixvault-image';
+  link.download = 'pixvault-data.jpg';
   link.click();
 }
 
 async function shareModalImage() {
   try {
-    await navigator.clipboard.writeText(modalImage.src);
-    console.log('Image link copied to clipboard!');
+    // Копируем абсолютный путь к картинке
+    const fullUrl = window.location.origin + modalImage.getAttribute('src');
+    await navigator.clipboard.writeText(fullUrl);
+    alert('Link secured and copied to clipboard!');
   } catch (err) {
     console.error('Copy failed:', err);
   }
@@ -89,7 +119,7 @@ async function shareModalImage() {
 // --- ИНИЦИАЛИЗАЦИЯ ---
 window.addEventListener('DOMContentLoaded', loadVaultGallery);
 
-// Экспортируем функции для HTML
+// Глобальный экспорт функций для доступа из HTML через onclick
 window.closeModal = closeModal;
 window.downloadModalImage = downloadModalImage;
 window.shareModalImage = shareModalImage;
