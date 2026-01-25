@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixVault | Neon Storage</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+</head>
+<body class="vault-page">
+  <div class="container">
+    <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
+
+    <h1 class="neon-text">Welcome to PixVault</h1>
+
+    <a href="gallery.html" class="holo-link">
+      <div class="holo-frame">
+        <div class="holo-content">
+            </div>
+        <p class="hint">Click the projection to explore your vault</p>
+      </div>
+    </a>
+
+    <div class="actions">
+        <button class="upload-btn" onclick="location.href='upload.html'">UPLOAD IMAGE</button>
+    </div>
+
+    <footer class="version-tag">
+        PixVault <span class="neon-cyan">v1.0.0</span>
+    </footer>
+  </div> <div id="image-modal" class="modal" style="display: none;">
+    <span class="modal-close" id="close-modal">&times;</span> <div class="modal-wrapper">
+        <img class="modal-content" id="full-image">
+        <div id="modal-caption" class="neon-caption"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

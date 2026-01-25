@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixVault Gallery | Visual Core</title>
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/gallery.css" />     <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body class="gallery-page">
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-button">🏠 Home</a>
+    <a href="upload.html" class="nav-button">📤 Upload</a>
+  </nav>
+
+  <div class="gallery-container">
+    <img src="assets/icons/logo.png" alt="PixVault Logo" class="logo" />
+
+    <h1 class="neon-text">Vault Gallery</h1>
+    <p class="subtitle">Browse your uploaded images</p>
+
+    <div class="gallery-grid" id="gallery-grid">
+      </div>
+  </div>
+
+  <div class="modal hidden" id="image-modal">
+    <div class="modal-content">
+      <img id="modal-image" src="" alt="Selected image from PixVault" />
+
+      <div class="modal-actions">
+        <button type="button" id="copy-link-btn" class="nav-btn-modern">
+            <span class="btn-icon">🔗</span> Copy Link
+        </button>
+
+        <button type="button" id="delete-image-btn" class="nav-btn-modern delete-btn">
+            <span class="btn-icon">🗑️</span> Delete
+        </button>
+
+        <button type="button" onclick="closeModal()" class="nav-btn-modern secondary">
+            <span class="btn-icon">✖</span> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>

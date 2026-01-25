@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* 🌌 ФОН: Используем фиксированный фон для эффекта глубины */
+  /* Путь ../assets/ корректен, так как css/ и assets/ лежат в одной папке public/ */
+  background: url('../assets/gallery/vault-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  color: #ffffff;
+  text-align: center;
+
+  /* Плавное появление страницы (связано с animations.css) */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 🖱 ИНТЕРАКТИВНОСТЬ: Запрещаем выделение текста для элементов интерфейса */
+h1, h2, h3, p, .subtitle {
+  cursor: default;
+  user-select: none;
+}
+
+/* 💡 ГЛАВНЫЙ ЗАГОЛОВОК: Эффект неонового свечения */
+h1 {
+  font-size: 48px;
+  color: #00ffe0; /* Фирменный бирюзовый неон */
+
+  /* text-shadow создает эффект "свечения" вокруг букв */
+  text-shadow: 0 0 12px #00ffe0, 0 0 25px rgba(0, 255, 224, 0.5);
+
+  margin-top: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* 🧩 ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ */
+.subtitle {
+  font-size: 18px;
+  color: #a0a0a0;
+  margin-bottom: 30px;
+}
+
+/* Утилита для скрытия элементов (используется в модалках) */
+.hidden {
+  display: none !important;
+}
